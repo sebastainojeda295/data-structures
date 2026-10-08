@@ -24,7 +24,7 @@ created_at=[]
 while True:
     os.system('clear')
     mainMenu()
-    opt=input("Press any option [1-8]:")
+    opt=input("Press any option [1-8]: ")
 
     match opt:
         case '1':
@@ -45,19 +45,20 @@ while True:
             genders.append(gender)
             created_at.append(date.today())
             print("User has been created successfully !!")
-            any_key = input ("press any key to back to main menu")
+            any_key = input ("Press any key to back to main menu")
 
 
         case '2':
-            print("list all registered users:::")
-            print(f"IDs:{ids}")
-            print(f"Firsnames:{firtsname}")
-            print(f"Lasnames:{lastname}")
-            print(f"mobile Phones:{mobile_phone}")
-            print(f"emails:{email}")
-            print(f"genders:{gender}")
-            print(f"created_at:{created_at}")
-            any_key = input ("press any key to back to main menu")
+            os.system('clear')
+            print("List all registered users:::")
+            print(f"IDs: {ids}")
+            print(f"Firsnames: {firtsname}")
+            print(f"Lasnames: {lastname}")
+            print(f"mobile Phones: {mobile_phone}")
+            print(f"emails: {email}")
+            print(f"genders: {gender}")
+            print(f"created_at: {created_at}")
+            any_key = input ("Press any key to back to main menu")
 
 
 
