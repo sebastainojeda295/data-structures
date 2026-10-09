@@ -12,6 +12,7 @@ def mainMenu():
     print ("[6]Show active uses")
     print ("[7]Show inactive users")
     print ("[8]Exit")
+
 ids=[]    
 firtsnames=[]
 lastnames=[]
@@ -21,6 +22,7 @@ statuses=[]
 genders=[]
 created_at=[]
 #Main
+
 while True:
     os.system('clear')
     mainMenu()
