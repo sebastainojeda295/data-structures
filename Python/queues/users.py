@@ -59,12 +59,11 @@ while True:
             print(f"IDs: {ids}")
             print(f"Firsnames: {firtsname}")
             print(f"Lasnames: {lastname}")
-            print(f"mobile Phones: {mobile_phone}")
-            print(f"emails: {email}")
-            print(f"genders: {gender}")
-            print(f"created_at: {created_at}")
+            print(f"Mobile Phones: {mobile_phone}")
+            print(f"Emails: {email}")
+            print(f"Genders: {gender}")
+            print(f"Created_at: {created_at}")
             any_key = input ("Press any key to back to main menu")
-
 
         case '8': 
             any_key=input("bye bye. press any key... ")
