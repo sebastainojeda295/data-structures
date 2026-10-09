@@ -13,6 +13,7 @@ def mainMenu():
     print ("[7]Show inactive users")
     print ("[8]Exit")
 
+
 ids=[]    
 firtsnames=[]
 lastnames=[]
@@ -22,6 +23,7 @@ statuses=[]
 genders=[]
 created_at=[]
 #Main
+
 
 while True:
     os.system('clear')
@@ -48,6 +50,7 @@ while True:
             created_at.append(date.today())
             print("User has been created successfully !!")
             any_key = input ("Press any key to back to main menu")
+
 
 
         case '2':
