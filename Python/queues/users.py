@@ -66,8 +66,6 @@ while True:
             any_key = input ("Press any key to back to main menu")
 
 
-
-
         case '8': 
             any_key=input("bye bye. press any key... ")
             break
