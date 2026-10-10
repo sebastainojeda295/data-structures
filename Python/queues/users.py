@@ -55,7 +55,7 @@ while True:
 
         case '2':
             os.system('clear')
-            print("List all registered users:::")
+            print(":::List all registered users:::")
             print(f"IDs: {ids}")
             print(f"Firsnames: {firtsname}")
             print(f"Lasnames: {lastname}")
