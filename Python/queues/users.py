@@ -21,6 +21,10 @@ mobile_phones=[]
 emails=[]
 statuses=[]
 genders=[]
+
+ages=[]
+salarys=[]
+
 created_at=[]
 #Main
 
@@ -40,6 +44,11 @@ while True:
             mobile_phone=input("Mobile Phone: ")
             email=input("E-mail: ")
             gender=input("Gender [M/F/O]: ")
+
+            age=input("age: ")
+            salary=input("salary: ")
+
+
             ids.append(id)
             firtsnames.append(firtsname)
             lastnames.append(lastname)
@@ -47,6 +56,11 @@ while True:
             emails.append(email)
             statuses.append(True)
             genders.append(gender)
+
+            ages.append(age)
+            salarys.append(salary)
+
+
             created_at.append(date.today())
             print("User has been created successfully !!")
             any_key = input ("Press any key to back to main menu")
@@ -56,14 +70,28 @@ while True:
         case '2':
             os.system('clear')
             print(":::List all registered users:::")
-            print(f"IDs: {ids}")
-            print(f"Firsnames: {firtsname}")
-            print(f"Lasnames: {lastname}")
-            print(f"Mobile Phones: {mobile_phone}")
-            print(f"Emails: {email}")
-            print(f"Genders: {gender}")
-            print(f"Created_at: {created_at}")
+
+            print ('-'*163)
+            print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Emails':<15} | {'Genders':<15} | {'Ages':<15} | {'Salarys':<15} | {'Created':<15} |")
+            print ('-'*163)
+
+            i=0
+            while i < len(ids):
+                print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} |  {ages[i]:<15}| {salarys[i]:<15} | {created_at[i]}      |')
+                print ('-'*163)
+                i += 1
+
+            #print(f"IDs: {ids}")
+            #print(f"Firsnames: {firtsname}")
+            #print(f"Lasnames: {lastname}")
+            #print(f"Mobile Phones: {mobile_phone}")
+            #print(f"Emails: {email}")
+            #print(f"Genders: {gender}")
+            #print(f"Created_at: {created_at}")
+
             any_key = input ("Press any key to back to main menu")
+
+
 
         case '8': 
             any_key=input("bye bye. press any key... ")
