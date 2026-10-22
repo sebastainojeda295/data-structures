@@ -38,10 +38,39 @@ while True:
         case '1':
             os.system('clear')
             print("::: Register form :::")
-            id=input("ident number: ")
+
+
+            while True:
+                id=input("ident number: ")
+                count = 0
+                i=0
+                while i< len(ids):
+                    if id == ids[i]:
+                        print("identification number already exists! \n try again:::")
+                        count += 1
+                        break
+                    i+=1
+                if count == 0:
+
+                    break
+
             firtsname=input("Firstname: ")
             lastname=input("Lastname: ")
-            mobile_phone=input("Mobile Phone: ")
+
+            while True:
+                mobile_phone=input("Mobile Phone: ")
+                count = 0
+                i=0
+                while i< len(mobile_phones):
+                    if mobile_phone == mobile_phones[i]:
+                        print("Number Phone already exists! \n try again:::")
+                        count += 1
+                        break
+                    i+=1
+                if count == 0:
+                    break
+
+
             email=input("E-mail: ")
             gender=input("Gender [M/F/O]: ")
 
