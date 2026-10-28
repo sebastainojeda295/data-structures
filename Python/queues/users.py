@@ -71,7 +71,21 @@ while True:
                     break
 
 
-            email=input("E-mail: ")
+            while True:
+                email=input("E-mail: ")
+                count = 0
+                i=0
+                while i< len(emails):
+                    if email == emails[i]:
+                        print("Email already exists! \n try again:::")
+                        count += 1
+                        break
+                    i+=1
+                if count == 0:
+                    break
+
+
+
             gender=input("Gender [M/F/O]: ")
 
             age=input("age: ")
