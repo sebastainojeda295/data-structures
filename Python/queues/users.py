@@ -111,18 +111,51 @@ while True:
 
 
         case '2':
-            os.system('clear')
-            print(":::List all registered users:::")
+           while True:
+                os.system('clear')
+                print("::: List Active Users Submenu :::")
+                print("[1] Sort in ascending order by identification")
+                print("[2] Sort in descending order by identification")
+                print("[3] Sort in ascending order by lastname")
+                print("[4] Sort in descending order by lastname")
+                print("[5] Exit to main menu")
+                
+                sort_opt = input("Select an option [1-5]: ")
+                
+                if sort_opt == '5':
+                    break
+                
+                if sort_opt in ['1', '2', '3', '4']:
+                    indices = []
+                    i = 0
+                    while i < len(ids):
+                        if statuses[i] == True:
+                            indices.append(i)
+                        i += 1
+                    
+                    if sort_opt == '1':
+                        indices.sort(key=lambda i: ids[i])
+                    elif sort_opt == '2':
+                        indices.sort(key=lambda i: ids[i], reverse=True)
+                    elif sort_opt == '3':
+                        indices.sort(key=lambda i: lastnames[i].lower())
+                    elif sort_opt == '4':
+                        indices.sort(key=lambda i: lastnames[i].lower(), reverse=True)
 
-            print ('-'*163)
-            print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Emails':<15} | {'Genders':<15} | {'Ages':<15} | {'Salarys':<15} | {'Created':<15} |")
-            print ('-'*163)
 
-            i=0
-            while i < len(ids):
-                print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} |  {ages[i]:<15}| {salarys[i]:<15} | {created_at[i]}      |')
-                print ('-'*163)
-                i += 1
+                    os.system('clear')
+                    print(":::List all active registered users:::")
+                    print ('-'*163)
+                    print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Created':<15} |")
+                    print ('-'*163)
+
+                    for i in indices:
+                        print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} | {str(ages[i]):<15} | {str(salarys[i]):<15} | {str(created_at[i]):<15} |')
+                        print ('-'*163)
+                    
+                    any_key = input("Press any key to continue...")
+                else:
+                    any_key = input("Invalid option. Press any key to try again...")
 
             #print(f"IDs: {ids}")
             #print(f"Firsnames: {firtsname}")
@@ -132,8 +165,39 @@ while True:
             #print(f"Genders: {gender}")
             #print(f"Created_at: {created_at}")
 
-            any_key = input ("Press any key to back to main menu")
+        case '3':
+            os.system('clear')
+            print("::: Search User :::")
+            id_user = input("Enter identification number to search: ")
+            
+            found = False
+            indices = []
+            i = 0
+            j = 0
+            while i < len(ids):
+                if id_user== ids[i]:
+                    j+= 1
+                    break
+                i += 1
+            
+            if j>0:
+                os.system('clear')
+                print("::: User found :::")
+                print (f"ident.user: {ids[i]}")
+                print (f"fullname: {firtsnames[i]} {lastnames[i]}")
+                print (f"mobile phone: {mobile_phones[i]}")
+                print (f"email: {emails[i]}")
+                print (f"mobile gender: {genders[i]}")
+                print (f" age: {ages[i]}")
+                print (f"salary: {salarys[i]}")
+            else:
+                print("identification number not found.")
+            
+            any_key = input("\nPress any key to back to main menu")
+            
 
+
+           
 
 
         case '8': 
