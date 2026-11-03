@@ -146,7 +146,7 @@ while True:
                     os.system('clear')
                     print(":::List all active registered users:::")
                     print ('-'*163)
-                    print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Created':<15} |")
+                    print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Created_at':<15} |")
                     print ('-'*163)
 
                     for i in indices:
@@ -183,13 +183,14 @@ while True:
             if j>0:
                 os.system('clear')
                 print("::: User found :::")
-                print (f"ident.user: {ids[i]}")
-                print (f"fullname: {firtsnames[i]} {lastnames[i]}")
-                print (f"mobile phone: {mobile_phones[i]}")
-                print (f"email: {emails[i]}")
-                print (f"mobile gender: {genders[i]}")
-                print (f" age: {ages[i]}")
-                print (f"salary: {salarys[i]}")
+                print ('-'*163)
+                print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Created_at':<15} |")
+                print ('-'*163)
+                
+                                    
+                print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} | {str(ages[i]):<15} | {str(salarys[i]):<15} | {str(created_at[i]):<15} |')
+                print ('-'*163)
+                
             else:
                 print("identification number not found.")
             
