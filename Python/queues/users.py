@@ -145,25 +145,18 @@ while True:
 
                     os.system('clear')
                     print(":::List all active registered users:::")
-                    print ('-'*163)
-                    print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Created_at':<15} |")
-                    print ('-'*163)
+                    print ('-'*179)
+                    print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Status':<15} | {'Created_at':<15} |")
+                    print ('-'*179)
 
                     for i in indices:
-                        print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} | {str(ages[i]):<15} | {str(salarys[i]):<15} | {str(created_at[i]):<15} |')
-                        print ('-'*163)
+                        status_str = "Active" if statuses[i] else "Inactive"
+                        print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} | {str(ages[i]):<15} | {str(salarys[i]):<15} | {status_str:<15} | {str(created_at[i]):<15} |')
+                        print ('-'*179)
                     
                     any_key = input("Press any key to continue...")
                 else:
                     any_key = input("Invalid option. Press any key to try again...")
-
-            #print(f"IDs: {ids}")
-            #print(f"Firsnames: {firtsname}")
-            #print(f"Lasnames: {lastname}")
-            #print(f"Mobile Phones: {mobile_phone}")
-            #print(f"Emails: {email}")
-            #print(f"Genders: {gender}")
-            #print(f"Created_at: {created_at}")
 
         case '3':
             os.system('clear')
@@ -195,11 +188,88 @@ while True:
                 print("identification number not found.")
             
             any_key = input("\nPress any key to back to main menu")
+
+
+        case '5':
+            os.system('clear')
+            print("::: Update User :::")
+            id_user = input("Enter identification number to update: ")
             
-
-
-           
-
+            i = 0
+            found = False
+            while i < len(ids):
+                if id_user == ids[i]:
+                    found = True
+                    break
+                i += 1
+            
+            if found:
+                while True:
+                    os.system('clear')
+                    print(f"::: Update menu option for user {ids[i]} :::")
+                    print("[1] Update firstname")
+                    print("[2] Update lastname")
+                    print("[3] Update mobile phone")
+                    print("[4] Update email")
+                    print("[5] Update status")
+                    print("[6] Update age")
+                    print("[7] Update salary")
+                    print("[8] Update all fields")
+                    print("[9] Exit")
+                    
+                    update_opt = input("Select an option [1-9]: ")
+                    
+                    if update_opt == '9':
+                        break
+                    
+                    if update_opt in ['1', '8']:
+                        new_val = input(f"new firstname (current firstname: {firtsnames[i]}): ")
+                        if new_val.strip():
+                            firtsnames[i] = new_val
+                    
+                    if update_opt in ['2', '8']:
+                        new_val = input(f"new lastname (current lastname: {lastnames[i]}): ")
+                        if new_val.strip():
+                            lastnames[i] = new_val
+                    
+                    if update_opt in ['3', '8']:
+                        new_val = input(f"new mobile phone (current mobile phone: {mobile_phones[i]}): ")
+                        if new_val.strip():
+                            mobile_phones[i] = new_val
+                    
+                    if update_opt in ['4', '8']:
+                        new_val = input(f"new email (current email: {emails[i]}): ")
+                        if new_val.strip():
+                            emails[i] = new_val
+                    
+                    if update_opt in ['5', '8']:
+                        current_status_str = "Active" if statuses[i] else "Inactive"
+                        new_val = input(f"new status [True/False] (current status: {current_status_str}): ")
+                        if new_val.strip():
+                            if new_val.lower() in ['true', 'active', '1', 't']:
+                                statuses[i] = True
+                            elif new_val.lower() in ['false', 'inactive', '0', 'f']:
+                                statuses[i] = False
+                    
+                    if update_opt in ['6', '8']:
+                        new_val = input(f"new age (current age: {ages[i]}): ")
+                        if new_val.strip():
+                            ages[i] = new_val
+                    
+                    if update_opt in ['7', '8']:
+                        new_val = input(f"new salary (current salary: {salarys[i]}): ")
+                        if new_val.strip():
+                            salarys[i] = new_val
+                    
+                    if update_opt in ['1', '2', '3', '4', '5', '6', '7', '8']:
+                        print("User updated successfully!")
+                        any_key = input("Press any key to continue...")
+                    else:
+                        if update_opt != '9':
+                            any_key = input("Invalid option. Press any key to try again...")
+            else:
+                print("User doesn't exist / identification number not found.")
+                any_key = input("\nPress any key to back to main menu")
 
         case '8': 
             any_key=input("bye bye. press any key... ")
