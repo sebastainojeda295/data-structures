@@ -4,7 +4,7 @@ from datetime import date
 #functions
 def mainMenu():
     print (":::Main menu:::")
-    print ("[1]Regsiter aa new user")
+    print ("[1]Regsiter a new user")
     print ("[2]List all users")
     print ("[3]Search user")
     print ("[4]Delete user")
@@ -113,7 +113,7 @@ while True:
         case '2':
            while True:
                 os.system('clear')
-                print("::: List Active Users Submenu :::")
+                print("::: List All Users Submenu :::")
                 print("[1] Sort in ascending order by identification")
                 print("[2] Sort in descending order by identification")
                 print("[3] Sort in ascending order by lastname")
@@ -129,8 +129,7 @@ while True:
                     indices = []
                     i = 0
                     while i < len(ids):
-                        if statuses[i] == True:
-                            indices.append(i)
+                        indices.append(i)
                         i += 1
                     
                     if sort_opt == '1':
@@ -144,15 +143,15 @@ while True:
 
 
                     os.system('clear')
-                    print(":::List all active registered users:::")
-                    print ('-'*179)
+                    print(":::List all registered users:::")
+                    print ('-'*181)
                     print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Status':<15} | {'Created_at':<15} |")
-                    print ('-'*179)
+                    print ('-'*181)
 
                     for i in indices:
                         status_str = "Active" if statuses[i] else "Inactive"
                         print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} | {str(ages[i]):<15} | {str(salarys[i]):<15} | {status_str:<15} | {str(created_at[i]):<15} |')
-                        print ('-'*179)
+                        print ('-'*181)
                     
                     any_key = input("Press any key to continue...")
                 else:
@@ -176,13 +175,13 @@ while True:
             if j>0:
                 os.system('clear')
                 print("::: User found :::")
-                print ('-'*163)
-                print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Created_at':<15} |")
-                print ('-'*163)
+                print ('-'*181)
+                print (f"| {'id':<15} | {'Firsname':<15} | {'Lastname':<15} | {'Mobile Phone':<15} | {'Email':<15} | {'Gender':<15} | {'Age':<15} | {'Salary':<15} | {'Status':<15} | {'Created_at':<15} |")
+                print ('-'*181)
                 
-                                    
-                print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} | {str(ages[i]):<15} | {str(salarys[i]):<15} | {str(created_at[i]):<15} |')
-                print ('-'*163)
+                status_str = "Active" if statuses[i] else "Inactive"
+                print(f'| {ids[i]:<15} | {firtsnames[i]:<15} | {lastnames[i]:<15} | {mobile_phones[i]:<15} | {emails[i]:<15} | {genders[i]:<15} | {str(ages[i]):<15} | {str(salarys[i]):<15} | {status_str:<15} | {str(created_at[i]):<15} |')
+                print ('-'*181)
                 
             else:
                 print("identification number not found.")
@@ -233,14 +232,40 @@ while True:
                             lastnames[i] = new_val
                     
                     if update_opt in ['3', '8']:
-                        new_val = input(f"new mobile phone (current mobile phone: {mobile_phones[i]}): ")
-                        if new_val.strip():
-                            mobile_phones[i] = new_val
+                        while True:
+                            new_val = input(f"new mobile phone (current mobile phone: {mobile_phones[i]}): ")
+                            if not new_val.strip():
+                                break
+                            # Validar si ya existe en otro registro
+                            exists = False
+                            k = 0
+                            while k < len(mobile_phones):
+                                if k != i and new_val == mobile_phones[k]:
+                                    print("Number Phone already exists! \n try again:::")
+                                    exists = True
+                                    break
+                                k += 1
+                            if not exists:
+                                mobile_phones[i] = new_val
+                                break
                     
                     if update_opt in ['4', '8']:
-                        new_val = input(f"new email (current email: {emails[i]}): ")
-                        if new_val.strip():
-                            emails[i] = new_val
+                        while True:
+                            new_val = input(f"new email (current email: {emails[i]}): ")
+                            if not new_val.strip():
+                                break
+                            # Validar si ya existe en otro registro
+                            exists = False
+                            k = 0
+                            while k < len(emails):
+                                if k != i and new_val == emails[k]:
+                                    print("Email already exists! \n try again:::")
+                                    exists = True
+                                    break
+                                k += 1
+                            if not exists:
+                                emails[i] = new_val
+                                break
                     
                     if update_opt in ['5', '8']:
                         current_status_str = "Active" if statuses[i] else "Inactive"
@@ -270,6 +295,8 @@ while True:
             else:
                 print("User doesn't exist / identification number not found.")
                 any_key = input("\nPress any key to back to main menu")
+
+
 
         case '8': 
             any_key=input("bye bye. press any key... ")
