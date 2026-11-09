@@ -81,9 +81,9 @@ print (user_data[0])
 
 #dictionaries
 countries_info = {
-    'country_name': 'colombia'
-    'capital': 'Bogota'
-    'abbrev': 'CO'
+    'country_name': 'colombia',
+    'capital': 'Bogota',
+    'abbrev': 'CO',
     'copde': 123456
 
 }
